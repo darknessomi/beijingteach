@@ -360,7 +360,7 @@ ul.nav.navbar-nav {
 	-ms-border-radius: 50%;
 }
 .join-left{
-	text-align:center;
+	text-align:left;
 }
 .join-left h4 {
 	color: #EF6286;
@@ -1707,7 +1707,7 @@ button.navbar-toggle.collapsed, .navbar-default .navbar-toggle:hover, .navbar-de
 	top: 111% !important;
 }
 .provide-left {
-	width: 50%;
+	width: 100%;
 }
 .provide-left h3 {
 	font-size: 17px;
