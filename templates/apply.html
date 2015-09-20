@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}APPLY{% endblock %}
+{% block head %}
+<!-- start-form -->
+<script type="text/javascript" src="http://api.filepicker.io/v2/filepicker.js"></script>
+<script src="js/jquery.form-validator.min.js"></script>
+<!-- end-form -->
+{% endblock %}
+{% block main %}
+	<!--start-contact-->
+	<div class="map">
+		<div class="container">
+			<div class="map-top heading">
+				<h1>APPLY TODAY</h1>
+			</div>
+			<div class="map-bottom">
+				<div class="col-md-6 welcome-left">
+					You can change your life today and experience all that the world has to offer in an exciting and different part of the world. Please fill out the Application form to the left. After your application is received we will email you with further information on how to get started. 
+					<p></p>
+					Please be sure to have the following items ready for submission: 
+					<p></p>	
+					- Resume
+					<p></p>	
+					- Recent Photograph
+					<p></p>	
+					- Copy of College Diploma
+					<p></p>	
+					- Copy of ID Page From Your Passport
+					<p></p>	
+					After all of this is received we will schedule a phone or personal interview to further review your application. 
+​					<p></p>
+					Thank you for applying. We look forward to working with you!
+				</div>
+				<div class="col-md-2 services-left"></div>
+				<div class="col-md-4 services-left">
+						<img src="images/free.png" alt="" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--end-contact-->
+	<!--start-contact-->
+	<div class="contact">
+		<div class="container">
+			<div class="contact-top heading"></div>
+			<div class="contact-bottom"> 
+				<div class="col-md-6 contact-left"> 
+					<form>
+						<h3>name</h3>
+						<input type="text" placeholder="First" required="">
+						<input type="text" placeholder="Last" required="">
+						<h3>Address</h3>
+						<input type="text" placeholder="Street Address" required="">
+						<input type="text" placeholder="Address Line 2" required="">
+						<input type="text" placeholder="City" required="">
+						<input type="text" placeholder="State / Province / Region" required="" name="state" data-validation="federatestate">
+						<input type="text" placeholder="Postal / Zip Code" required="">
+						<input type="text" placeholder="Country" required="" name="country" data-validation="country">
+					</form>
+				</div>
+				<div class="col-md-6 contact-left">
+					<form>
+						<h3>Email</h3>
+						<input type="text" placeholder="E-mail" required="" name="email" data-validation="email">
+						<h3>Phone Number</h3>
+						<input type="text" placeholder="Phone" required="">
+						<h3>Experiences</h3>
+						<textarea placeholder="Experiences"></textarea>
+						<h3>File</h3>
+						<input type="filepicker-dragdrop" data-fp-apikey="l5uQ3k7FQ5GoYCHyTdZV" data-fp-mimetypes="*/*" data-fp-container="modal" data-fp-multiple="true" onchange="out='';for(var i=0;i<event.fpfiles.length;i++){out+=event.fpfiles[i].url;out+=' '};alert(out)">
+						<br>
+						<input type="submit" value="SUBMIT">
+					</form>	
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+
+	<!--end-contact-->
+{% endblock %}
+		{% block javascript %}
+		<!-- start-form -->
+		<script>
+
+		  $.validate({
+		    modules : 'location',
+		    onModulesLoaded : function() {
+		      $('#country').suggestCountry();
+		      $('#state').suggestState();
+		    }
+		  });
+
+		</script>
+		{% endblock %}

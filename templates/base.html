@@ -1,0 +1,109 @@
+{% autoescape off %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>BEIJING TEACH | {% block title %}INDEX{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Beijing, Beijing Teach, China, Teach English, Teach English in Beijing, Teach English in China, Teach in China, esl jobs beijing, esl jobs china, teach esl in beijing, teach esl in china, tefl beijing, tefl china" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link rel="shortcut icon" href="images/icon.ico" type="image/x-icon"/>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+{% block head %}
+{% endblock %}
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+<!-- end-smoth-scrolling -->
+</head>
+<body>
+	<!--start-header-->
+	<div class="header" id="home">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="" /></a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="index.html" class="hvr-bounce-to-top">Home <span class="sr-only">(current)</span></a></li>
+					<li><a href="about.html" class="hvr-bounce-to-top">About</a></li>
+					<li><a href="experience.html" class="hvr-bounce-to-top">Experience</a></li>
+					<li><a href="china.html" class="hvr-bounce-to-top">China</a></li>
+					<li><a href="accommodations.html" class="hvr-bounce-to-top">Accommodations</a></li>
+					<li><a href="contact.html" class="hvr-bounce-to-top">Contact</a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+	</div>
+	<!--end-header-->
+	{% block main %}
+    {% endblock %}
+    <!--start-footer-->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-main">
+				<div class="col-md-4 footer-left">
+					<span class="glyphicon glyphicon-map-marker map-marker" aria-hidden="true"></span>
+					<p>BeijingTeach.com, <span>38 St. Marks Place Roslyn,</span> NY 11577.</p>
+				</div>
+				<div class="col-md-4 footer-left">
+					<span class="glyphicon glyphicon-phone map-marker" aria-hidden="true"></span>
+					<p>+1 516 535 9236</p>
+				</div>
+				<div class="col-md-4 footer-left">
+					<p class="footer-class">© 2015 Beijing Teach. All Rights Reserved. </p>
+					<ul>
+						<li><a href="http://www.facebook.com/BeijingTeach"><span class="fb"></span></a></li>
+						<li><a href="http://www.twitter.com/BeijingTeach"><span class="twit"></span></a></li>
+						<li><a href="#"><span class="rss"></span></a></li>
+						<li><a href="#"><span class="ggl"></span></a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				/*
+				var defaults = {
+		  			containerID: 'toTop', // fading element id
+					containerHoverID: 'toTopHover', // fading element hover id
+					scrollSpeed: 1200,
+					easingType: 'linear' 
+		 		};
+				*/
+				
+				$().UItoTop({ easingType: 'easeOutQuart' });
+				
+			});
+		</script>
+		{% block javascript %}
+		{% endblock %}
+		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	</div>
+	<!--end-footer-->
+</body>
+</html>
+{% endautoescape %}

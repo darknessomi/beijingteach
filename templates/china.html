@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block title %}CHINA{% endblock %}
+{% block head %}
+<!-- start-popImage -->
+<link href="css/popImage.css" rel='stylesheet' type='text/css' />
+<script src="js/jquery.popImage.js"></script>
+<script>
+	$(function(){
+		$("a.image_gall").popImage();
+	});
+</script>
+<!--end-popImage -->
+<!-- start-unslider -->
+<style>
+.slider { 
+position: relative; 
+overflow: auto;
+}
+.slider li {
+list-style: none; 
+}
+</style>
+<script src="js/unslider.min.js"></script>
+<script>
+	$(function() {
+    	$('.slider').unslider({
+		speed: 1000,
+		delay: 3000,
+		complete: function() {},
+		keys: true,
+		dots: true,
+		fluid: false
+	});
+	});
+</script>
+<!--end-unslider -->
+{% endblock %}
+{% block main %}
+	<!--start-what-->
+	<div class="services">
+		<div class="container">
+			<div class="services-top heading">
+				<h1>LIFE IN BEIJING</h1>
+			</div>
+			<div class="services-bottom">
+				<div class="slider">
+					<ul>
+						<li>
+							<div class="col-md-12 services-left">
+								<a href="images/ch1.jpg" class="image_gall">
+									<img src="images/ch1.jpg" alt="" />
+								</a>		
+							</div>
+						</li>
+						<li>
+							<div class="col-md-12 services-left">
+								<a href="images/ch1.jpg" class="image_gall">
+									<img src="images/ch1.jpg" alt="" />
+								</a>		
+							</div>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="col-md-12 welcome-left">
+					<p>Beijing is the capital city of China, with a population nearing 20 million people. It is the political and cultural center of the country and by far the most diverse city. While retaining the charm and tradition of Chinese society, it also is a true international hub with an extraordinary expat community.</p>
+					<p>Beijing is comprised of 4 distinct main districts. It truly is a bustling metropolis but at the same time it is not too overwhelming and quite manageable for new arrivals - even those who have never lived in a city before. The metro system is the easiest way to navigate around this sprawling city at first. Once a seasoned expat, a scooter is a great way to see and explore the city.</p>
+					<p>While Beijing has its own cuisine characteristic of northern China; you will have plenty of choice. There are resturants with specialties from around the country and specific to a particular provinces. No matter your taste buds, you can find it in Beijing. There are also many western restaurants that serve everything and are as good as many options in the west. Basically, if you're craving it, Beijing has it. From street food vendors to 5 star restaurants, eating out is always a great experience, whether it costs $2 or $200.</p>
+					<p>Beijing's nightlife is unique to say the least and sets it apart from every other major city in the world and offers endless options, while at the same time being very affordable. You and your friends can take over a KTV suite and sing Frank Sinatra or go dancing at some of the biggest discos in the world. There are bars of all shapes and sizes and even a few speakeasies. Beijing is a late night town that does not have a slow night and there is something for everyone no matter what your personality is. Beijing has four distinct seasons and each season has its own festivals and celebrations and special activities. Chinese New Year is something that you'll never forget.</p>
+					<p>Custom and tradition are still widely respected in China as many reminders of China's glorious past are everywhere in and around Beijing -- – You can spend a day at The Forbidden City where the emperors lived for nearly 1000 years. Go visit the amazing parks that are scattered across the city or go boating on the lake of the Summer Palace or Beihai Park. Google these places now! You can easily get lost in hutong neighborhoods - which are some of the most unique residential areas in all of China and of course you're only a quick ride away from the Great Wall. With living expenses so low and travel so affordable, your time in Beijing is the perfect opportunity to explore China and the rest of Asia. It might just be the only chance you'll ever have to visit these amazing destinations!</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="services-bottom">
+				<div class="slider">
+					<ul>
+						<li>
+							<div class="col-md-4 services-left">
+								<a href="images/s-1.jpg" class="image_gall">
+									<img src="images/s-1.jpg" alt="" />
+								</a>		
+							</div>
+
+							<div class="col-md-4 services-left">
+								<a href="images/s-2.jpg" class="image_gall">
+								<img src="images/s-2.jpg" alt="" />			
+								</a>		
+							</div>
+
+							<div class="col-md-4 services-left">
+								<a href="images/s-3.jpg" class="image_gall">
+									<img src="images/s-3.jpg" alt="" />	
+								</a>
+							</div>
+						</li>
+						<li>
+							<div class="col-md-4 services-left">
+								<a href="images/s-1.jpg" class="image_gall">
+									<img src="images/s-1.jpg" alt="" />
+								</a>		
+							</div>
+
+							<div class="col-md-4 services-left">
+								<a href="images/s-2.jpg" class="image_gall">
+								<img src="images/s-2.jpg" alt="" />			
+								</a>		
+							</div>
+
+							<div class="col-md-4 services-left">
+								<a href="images/s-3.jpg" class="image_gall">
+									<img src="images/s-3.jpg" alt="" />	
+								</a>
+							</div>
+						</li>
+						<li>
+							<div class="col-md-4 services-left">
+								<a href="images/s-1.jpg" class="image_gall">
+									<img src="images/s-1.jpg" alt="" />
+								</a>		
+							</div>
+
+							<div class="col-md-4 services-left">
+								<a href="images/s-2.jpg" class="image_gall">
+								<img src="images/s-2.jpg" alt="" />			
+								</a>		
+							</div>
+
+							<div class="col-md-4 services-left">
+								<a href="images/s-3.jpg" class="image_gall">
+									<img src="images/s-3.jpg" alt="" />	
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--end-what-->
+{% endblock %}
