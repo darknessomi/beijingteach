@@ -360,7 +360,7 @@ ul.nav.navbar-nav {
 	-ms-border-radius: 50%;
 }
 .join-left{
-	text-align:left;
+	text-align:center;
 }
 .join-left h4 {
 	color: #EF6286;
@@ -1363,7 +1363,7 @@ h4.b4 {
 	background-position: -90px -30px;
 }
 }
-@media(max-width:736px){
+@media(max-width:767px){
 .navbar-header {
 	width: 100%;
 	float: none;
@@ -1378,7 +1378,7 @@ h4.b4 {
 	margin-top: 21px;
 }
 }
-@media(max-width:640px){
+@media(max-width:766px){
 ul.nav.navbar-nav {
 	width: 100%;
 	float: none;
