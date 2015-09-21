@@ -20,5 +20,10 @@ from home import views as home
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', home.index, name='index')
+    url(r'^$', home.index, name='index'),
+    url(r'^about/$', home.about, name='about'),
+    url(r'^experience/$', home.experience, name='experience'),
+    url(r'^china/$', home.china, name='china'),
+    url(r'^accommodations/$', home.accommodations, name='accommodations'),
+    url(r'^contact/$', home.contact, name='contact'),
 ]
