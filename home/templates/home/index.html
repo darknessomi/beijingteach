@@ -23,7 +23,7 @@
 								<h2>Full-Service English Teacher Recruiter</h2>
 								<p>We provide teachers with great teaching jobs throughout Beijing and are here to help before and after your arrival in China. To qualify for one of our teaching positions, you must be energetic, patient, and love working with children. We prefer candidates who possess a bachelor’s degree or have considerable teaching experience.</p>
 								<div class="bnr-btn">
-									<a href="#" class="hvr-shutter-out-horizontal">Read More</a>
+									<a href="{% url 'about' %}" class="hvr-shutter-out-horizontal">Read More</a>
 								</div>
 							</div>
 						</li>
@@ -33,7 +33,7 @@
 								<h2>Everyday is an adventure and never boring</h2>
 								<p>Working with children and teaching them English as second language is one of the most unique life experiences a person can have. A common saying among our teachers, "There's never a dull day living and working in China as an English teacher."</p>
 								<div class="bnr-btn">
-									<a href="#" class="hvr-shutter-out-horizontal">Read More</a>
+									<a href="{% url 'experience' %}" class="hvr-shutter-out-horizontal">Read More</a>
 								</div>
 							</div>
 						</li>
@@ -43,7 +43,7 @@
 								<h2>We look forward to working with you!</h2>
 								<p>You can change your life today and experience all that the world has to offer in an exciting and different part of the world. Please fill out the Application form to the left. After your application is received we will email you with further information on how to get started. </p>
 								<div class="bnr-btn">
-									<a href="apply.html" class="hvr-shutter-out-horizontal">Read More</a>
+									<a href="{% url 'apply' %}" class="hvr-shutter-out-horizontal">Read More</a>
 								</div>
 							</div>
 						</li>
@@ -72,7 +72,7 @@
 	<!--End-slider-script-->	
 	<!--start-provide-->
 	<div class="provide">
-		<a href="#">
+		<a href="{% url 'about' %}">
 			<div class="col-md-4 provide-left provide-one">
 				<h5></h5>
 				<h3>MAKE A DIFFERENCE </h3>
@@ -80,7 +80,7 @@
 				<p>Lets educate China together.</p>
 			</div>
 		</a>
-		<a href="experience.html">
+		<a href="{% url 'experience' %}">
 			<div class="col-md-4 provide-left provide-two">
 				<h5></h5>
 				<h3>THE EXPERIENCE </h3>
@@ -88,7 +88,7 @@
 				<p>Learn about all of the wonderful things China has to offer.</p>
 			</div>
 		</a>
-		<a href="apply.html">
+		<a href="{% url 'apply' %}">
 			<div class="col-md-4 provide-left provide-tre">
 				<h5></h5>
 				<h3>APPLY NOW! </h3>
@@ -107,7 +107,7 @@
 					<h4>We provide comprehensive compensation packages.</h4>
 					<p>In any situation where a teacher is reasonably in need, you will have a strong support system to lean on.</p>
 					<div class="w-btn">
-						<a href="#" class="hvr-shutter-out-horizontal">Read More</a>
+						<a href="{% url 'about' %}" class="hvr-shutter-out-horizontal">Read More</a>
 					</div>
 				</div>
 				<div class="col-md-6 welcome-left">
@@ -115,7 +115,7 @@
 					<h4>We will try our best to accommodate your preference</h4>
 					<p>Current demand in China is greatest for kindergarten and early childhood development. Please let us know if you have a strong preference for working with older students, and we will try our best to accommodate you.</p>
 					<div class="w-btn">
-						<a href="#" class="hvr-shutter-out-horizontal">Read More</a>
+						<a href="{% url 'experience' %}" class="hvr-shutter-out-horizontal">Read More</a>
 					</div>
 				</div>
 				<div class="clearfix"></div>
