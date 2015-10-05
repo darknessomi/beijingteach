@@ -23,3 +23,6 @@ def accommodations(request):
 
 def contact(request):
     return render(request, 'home/contact.html')
+
+def apply(request):
+    return render(request, 'home/apply.html')
