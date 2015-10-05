@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^china/$', home.china, name='china'),
     url(r'^accommodations/$', home.accommodations, name='accommodations'),
     url(r'^contact/$', home.contact, name='contact'),
+    url(r'^apply/$', home.contact, name='apply'),
 ]
