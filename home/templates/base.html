@@ -28,37 +28,37 @@
 <!-- end-smoth-scrolling -->
 </head>
 <body>
-    <!--start-header-->
-    <div class="header" id="home">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{% url 'index' %}"><img src="/static/images/logo.png" alt="" /></a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="{% url 'index' %}" class="hvr-bounce-to-top">Home <span class="sr-only">(current)</span></a></li>
-                    <li><a href="{% url 'about' %}" class="hvr-bounce-to-top">About</a></li>
-                    <li><a href="{% url 'experience' %}" class="hvr-bounce-to-top">Experience</a></li>
-                    <li><a href="{% url 'china' %}" class="hvr-bounce-to-top">China</a></li>
-                    <li><a href="{% url 'accommodations' %}" class="hvr-bounce-to-top">Accommodations</a></li>
-                    <li><a href="{% url 'contact' %}" class="hvr-bounce-to-top">Contact</a></li>
-                </ul>
-                <div class="clearfix"></div>
-            </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-    </div>
-    <!--end-header-->
-    {% block main %}
+	<!--start-header-->
+	<div class="header" id="home">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				</button>
+                <a class="navbar-brand" href="{% url 'index' %}"><img src="/static/images/logo.png" alt=""/></a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="{% url 'index' %}" class="hvr-bounce-to-top">Home <span class="sr-only">(current)</span></a></li>
+					<li><a href="{% url 'about' %}" class="hvr-bounce-to-top">About</a></li>
+					<li><a href="{% url 'experience' %}" class="hvr-bounce-to-top">Experience</a></li>
+					<li><a href="{% url 'china' %}" class="hvr-bounce-to-top">China</a></li>
+					<li><a href="{% url 'accommodations' %}" class="hvr-bounce-to-top">Accommodations</a></li>
+					<li><a href="{% url 'contact' %}" class="hvr-bounce-to-top">Contact</a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+	</div>
+	<!--end-header-->
+	{% block main %}
     {% endblock %}
     <!--start-footer-->
     <div class="footer">
