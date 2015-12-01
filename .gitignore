@@ -64,3 +64,6 @@ VENV
 
 # gen staticfiles
 staticfiles
+
+# local dev
+db.sqlite3
