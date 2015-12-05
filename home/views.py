@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.core.urlresolvers import reverse
+from .models import Message
 
 
 def index(request):
@@ -22,6 +24,18 @@ def accommodations(request):
 
 
 def contact(request):
+    if request.method == "POST":
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+
+        #TODO form validation
+        if subject and message and name and email:
+            Message.objects.new_message_from(name, email,
+                                             subject=subject, content=message)
+
+        return redirect(reverse('contact'))
     return render(request, 'home/contact.html')
 
 def apply(request):

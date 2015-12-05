@@ -15,17 +15,18 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('url', models.TextField()),
-                ('created', models.DateTimeField(editable=False)),
-                ('updated', models.DateTimeField(editable=False)),
+                ('created', models.DateTimeField(auto_now_add=True)),
+                ('updated', models.DateTimeField(auto_now=True)),
             ],
         ),
         migrations.CreateModel(
             name='Snippet',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('subject', models.CharField(max_length=140)),
                 ('content', models.TextField()),
-                ('created', models.DateTimeField(editable=False)),
-                ('updated', models.DateTimeField(editable=False)),
+                ('created', models.DateTimeField(auto_now_add=True)),
+                ('updated', models.DateTimeField(auto_now=True)),
             ],
         ),
     ]

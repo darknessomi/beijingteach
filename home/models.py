@@ -21,18 +21,27 @@ class ImgPos(Position):
     img = models.ForeignKey(Img, related_name="positions")
 
 
-class Applicant(models.Model):
+class Visitor(models.Model):
     name = models.CharField(max_length=50)
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     is_valid = models.BooleanField(default=False)
-    date_joined = models.DateTimeField(auto_now_add=False, editable=False)
+    date_joined = models.DateTimeField(auto_now_add=True, editable=False)
 
-    def email_applicant(self, subject, message, from_email=None, **kwargs):
+    def send_mail(self, subject, message, from_email=None, **kwargs):
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
 
+class MessageManager(models.Manager):
+
+    def new_message_from(self, name, email, **kwargs):
+        v, _ = Visitor.objects.update_or_create(email=email,
+                                                defaults={'name': name})
+        return self.create(visitor=v, **kwargs)
+
+
 class Message(Snippet):
-    applicant = models.ForeignKey(Applicant, related_name="messages")
+    visitor = models.ForeignKey(Visitor, related_name="messages")
+    objects = MessageManager()
 
 
 def init_all():

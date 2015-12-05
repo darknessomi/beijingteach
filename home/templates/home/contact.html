@@ -19,20 +19,23 @@
             <div class="contact-top heading">
             </div>
             <div class="contact-bottom"> 
-                <div class="col-md-6 contact-left"> 
-                    <form>
-                        <input type="text" placeholder="Name" required="">
-                        <input type="text" placeholder="E-mail" required="">
-                        <input type="text" placeholder="Subject" required="">
+                <div class="contact-left"> 
+                    <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="col-md-6">
+                            <input type="text" name="name" placeholder="Name" required>
+                            <input type="text" name="email" placeholder="E-mail" required>
+                            <input type="text" name="subject" placeholder="Subject" required>
+                        </fieldset>
+                        <fieldset class="col-md-6">
+                            <textarea name="message" placeholder="Message"></textarea>
+                        </fieldset>
+                        <fieldset class="col-md-2 col-md-offset-6">
+                            <input type="submit" value="SEND">
+                        </fieldset>
                     </form>
                 </div>
-                <div class="col-md-6 contact-left">
-                    <form>
-                        <textarea placeholder="Message"></textarea>
-                        <input type="submit" value="SEND">
-                    </form> 
-                </div>
-                <div class="clearfix"> </div>
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>
