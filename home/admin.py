@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import SnippetPos, ImgPos, Visitor, Message
 
-# Register your models here.
+admin.site.register(SnippetPos)
+admin.site.register(ImgPos)
+admin.site.register(Visitor)
+admin.site.register(Message)

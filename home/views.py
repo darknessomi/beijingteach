@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
-from .models import Message
+from .models import Message, SnippetPos
 
 
 def index(request):
@@ -8,19 +8,23 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'home/about.html')
+    snippet = SnippetPos.objects.get_snippet(slug='about')
+    return render(request, 'home/about.html', locals())
 
 
 def experience(request):
-    return render(request, 'home/experience.html')
+    snippet = SnippetPos.objects.get_snippet(slug='experience')
+    return render(request, 'home/experience.html', locals())
 
 
 def china(request):
-    return render(request, 'home/china.html')
+    snippet = SnippetPos.objects.get_snippet(slug='china')
+    return render(request, 'home/china.html', locals())
 
 
 def accommodations(request):
-    return render(request, 'home/accommodations.html')
+    snippet = SnippetPos.objects.get_snippet(slug='accommodations')
+    return render(request, 'home/accommodations.html', locals())
 
 
 def contact(request):

@@ -5,7 +5,7 @@ from home import views as home
 
 urlpatterns = [
     # plugin apps
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^x/', include(admin.site.urls)),
     url(r'^dashboard/', include('dashboard.urls', namespace='dashboard')),
 ]
 

@@ -7,6 +7,9 @@ class Snippet(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     updated = models.DateTimeField(auto_now=True, editable=False)
 
+    def __str__(self):
+        return '{} ({})'.format(self.subject, self.updated)
+
 
 class Img(models.Model):
     url = models.TextField()
