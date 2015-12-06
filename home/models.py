@@ -39,8 +39,12 @@ class MessageManager(models.Manager):
         return self.create(visitor=v, **kwargs)
 
 
-class Message(Snippet):
+class Message(models.Model):
+    subject = models.CharField(max_length=140)
+    content = models.TextField()
     visitor = models.ForeignKey(Visitor, related_name="messages")
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    updated = models.DateTimeField(auto_now=True, editable=False)
     objects = MessageManager()
 
 

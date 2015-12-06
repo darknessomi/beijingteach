@@ -25,9 +25,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Message',
             fields=[
-                ('snippet_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='dashboard.Snippet')),
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('subject', models.CharField(max_length=140)),
+                ('content', models.TextField()),
+                ('created', models.DateTimeField(auto_now_add=True)),
+                ('updated', models.DateTimeField(auto_now=True)),
             ],
-            bases=('dashboard.snippet',),
         ),
         migrations.CreateModel(
             name='SnippetPos',
