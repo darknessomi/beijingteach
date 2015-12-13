@@ -1,38 +1,5 @@
 from django.db import models
 from django.core.mail import send_mail
-from dashboard.models import Snippet, Img
-
-
-class Position(models.Model):
-    slug = models.SlugField(unique=True)
-
-    class Meta:
-        abstract = True
-
-    def __str__(self):
-        return self.slug
-
-
-class SnippetPosManager(models.Manager):
-
-    def get_snippet(self, **kwargs):
-        sp = self.filter(**kwargs)
-        return sp[0].snippet if sp else None
-
-
-class SnippetPos(Position):
-    snippet = models.OneToOneField(Snippet, related_name="position", null=True, blank=True)
-    objects = SnippetPosManager()
-
-    class Meta:
-        verbose_name_plural = "Snippet Positons"
-
-
-class ImgPos(Position):
-    img = models.ForeignKey(Img, related_name="position")
-
-    class Meta:
-        verbose_name_plural = "Img Positons"
 
 
 class Visitor(models.Model):

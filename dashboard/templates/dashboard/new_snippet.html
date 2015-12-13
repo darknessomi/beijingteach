@@ -7,24 +7,20 @@
             <div class="col-lg-12">
                 <form method="POST">
                     {% csrf_token %}
-                    <div class="form-group">
-                        <label for="subject">Subject:</label>
-                        <input type="text" name="subject" class="form-control" id="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="content">Content:</label>
-                        <textarea name="content" class="form-control" rows="25" id="content"></textarea>
-                    </div>
-                    <div class="form-inline">
-                        <label for="content">Position:&nbsp;</label>
-                        <select name="position" class="form-control">
-                            <option>----------</option>
-                            {% for sp in snippet_pos %}
-                            <option>{{ sp.slug }}</option>
-                            {% endfor %}
-                        </select>
+
+                    {% for field in form %}
+                    <div class={% if forloop.last %}"form-inline"{%else%}"form-group"{%endif%}>
+                        {{ field.errors }}
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if forloop.last %}
                         <button type="submit" class="btn btn-primary">Submit</button>
+                        {% endif %}
                     </div>
+                    {% endfor %}
+
+                    {{ form.non_field_errors }}
+
                 </form>
             </div>
         </div>
