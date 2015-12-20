@@ -10,6 +10,9 @@ class Snippet(models.Model):
     def __str__(self):
         return '{} ({})'.format(self.subject, self.updated)
 
+    def has_pos(self):
+        return len(SnippetPos.objects.filter(snippet=self)) == 1
+
 
 class Img(models.Model):
     url = models.TextField()

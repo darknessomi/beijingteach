@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse
 from home.models import Message
 from .models import Snippet
@@ -14,10 +14,23 @@ def snippets(request):
 
 def new_snippet(request):
     form = SnippetForm(request.POST or None)
+
     if request.method == "POST" and form.is_valid():
         form.save()
         return redirect(reverse('dashboard:snippets'))
-    else:
-        form = SnippetForm()
 
-    return render(request, 'dashboard/new_snippet.html', locals())
+    return render(request, 'dashboard/edit_snippet.html', locals())
+
+def update_snippet(request, snippet_id):
+    snippet = get_object_or_404(Snippet, pk=snippet_id)
+    initial = {}
+    if snippet.has_pos():
+        initial = {'position': snippet.position.slug}
+
+    form = SnippetForm(request.POST or None, initial=initial, instance=snippet)
+
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        return redirect(reverse('dashboard:snippets'))
+
+    return render(request, 'dashboard/edit_snippet.html', locals())

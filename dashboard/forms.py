@@ -29,12 +29,20 @@ class SnippetForm(StyledModelForm):
         self.fields['content'].widget.attrs['rows'] = 25
 
     def save(self, *args, **kwargs):
-        new_snippet = super(SnippetForm, self).save(*args, **kwargs)
+        instance = super(SnippetForm, self).save(*args, **kwargs)
+
+        original_snippet_pos_set = SnippetPos.objects.filter(snippet=instance)
+        if len(original_snippet_pos_set) == 1:
+            original_snippet_pos_set[0].snippet = None
+            original_snippet_pos_set[0].save()
+
         position = self.clean().get('position', '')
         snippet_pos_set = SnippetPos.objects.filter(slug=position)
         if len(snippet_pos_set) == 1:
-            snippet_pos_set[0].snippet = new_snippet
+            snippet_pos_set[0].snippet = instance
             snippet_pos_set[0].save()
+
+        return instance
 
     class Meta:
         model = Snippet
