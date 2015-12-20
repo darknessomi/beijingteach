@@ -11,6 +11,7 @@ After install, go with this:
 ```
 virtualenv venv
 source venv/bin/activate
+pip install -r requirements.txt
 python manage.py migrate
 python manage.py init_data
 heroku local
