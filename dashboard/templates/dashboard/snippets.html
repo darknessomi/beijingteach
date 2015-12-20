@@ -24,7 +24,7 @@
                             <td>{% if s.position %}{{ s.position.slug }}{% else %}----------{% endif %}</td>
                             <td>{{ s.content|truncatechars:45 }}</td>
                             <td>
-                                <a class="label label-success" href="{% url 'dashboard:new_snippet' %}">Edit</a>
+                                <a class="label label-success" href="{% url 'dashboard:update_snippet' s.id %}">Edit</a>
                             </td>
                         </tr>
                         {% endfor %}

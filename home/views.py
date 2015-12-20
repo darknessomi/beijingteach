@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
-from .models import Message, SnippetPos
+from dashboard.models import SnippetPos
+from .models import Message
 
 
 def index(request):
