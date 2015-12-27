@@ -753,7 +753,7 @@ ul.nav.navbar-nav {
 /*--footer-end--*/
 /*--contact-start--*/
 .map {
-	padding: 6em 0px;
+	padding: 1em 0px;
 }
 .map-bottom {
 	margin-top: 2.5%;
@@ -773,7 +773,7 @@ ul.nav.navbar-nav {
 .contact-bottom {
 	margin-top: 3%;
 }
-.contact-left form input[type="text"], .contact-left textarea {
+.contact-left form input[type="text"], form input[type="email"], .contact-left textarea {
 	width: 100%;
 	padding: 12px 12px;
 	border: 1px solid #BDBCBC;
@@ -955,7 +955,7 @@ h4.b4 {
 	font-size: 14px;
 	margin: 1% 0px 0px;
 }
-.contact-left form input[type="text"], .contact-left textarea {
+.contact-left form input[type="text"], form input[type="email"], .contact-left textarea {
 	padding: 10px 12px;
 	font-size: 14px;
 	margin-bottom: 1.2em;
@@ -2044,7 +2044,7 @@ button.navbar-toggle.collapsed, .navbar-default .navbar-toggle:hover, .navbar-de
 .contact-bottom {
 	margin-top: 5%;
 }
-.contact-left form input[type="text"], .contact-left textarea {
+.contact-left form input[type="text"], form input[type="email"], .contact-left textarea {
 	padding: 8px 12px;
 	font-size: 12px;
 	margin-bottom: 10px;

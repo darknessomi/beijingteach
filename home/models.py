@@ -12,18 +12,9 @@ class Visitor(models.Model):
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
 
-class MessageManager(models.Manager):
-
-    def new_message_from(self, name, email, **kwargs):
-        v, _ = Visitor.objects.update_or_create(email=email,
-                                                defaults={'name': name})
-        return self.create(visitor=v, **kwargs)
-
-
 class Message(models.Model):
     subject = models.CharField(max_length=140)
     content = models.TextField()
-    visitor = models.ForeignKey(Visitor, related_name="messages")
+    visitor = models.ForeignKey(Visitor, related_name="messages", null=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     updated = models.DateTimeField(auto_now=True, editable=False)
-    objects = MessageManager()

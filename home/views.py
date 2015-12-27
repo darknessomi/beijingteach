@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
 from dashboard.models import SnippetPos
-from .models import Message
+from .forms import MessageForm
 
 
 def index(request):
@@ -29,19 +29,14 @@ def accommodations(request):
 
 
 def contact(request):
-    if request.method == "POST":
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
-        name = request.POST.get('name')
-        email = request.POST.get('email')
+    form = MessageForm(request.POST or None)
 
-        #TODO form validation
-        if subject and message and name and email:
-            Message.objects.new_message_from(name, email,
-                                             subject=subject, content=message)
-
+    if request.method == "POST" and form.is_valid():
+        form.save()
         return redirect(reverse('contact'))
-    return render(request, 'home/contact.html')
+
+    return render(request, 'home/contact.html', locals())
+
 
 def apply(request):
     return render(request, 'home/apply.html')

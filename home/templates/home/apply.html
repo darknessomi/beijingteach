@@ -67,7 +67,7 @@
                         <h3>Experiences</h3>
                         <textarea placeholder="Experiences"></textarea>
                         <h3>File</h3>
-                        <input type="filepicker" data-fp-apikey="Acgn1KbapSO6jrUmthcrkz" data-fp-mimetypes="*/*" data-fp-container="modal" data-fp-multiple="true" onchange="out='';for(var i=0;i<event.fpfiles.length;i++){out+=event.fpfiles[i].url;out+=' '};$(fileurl).val(out);">
+                        <input type="filepicker" data-fp-apikey="Acgn1KbapSO6jrUmthcrkz" data-fp-mimetypes="*/*" data-fp-container="modal" onchange="$(fileurl).attr('value',event.fpfile.url);">
                         <input id = "fileurl" name="fileurl" type="text" value="" style="display: none">
                         <input type="submit" value="SUBMIT" style="margin-left: 50px">
                     </form> 

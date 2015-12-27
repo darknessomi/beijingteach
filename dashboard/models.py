@@ -30,16 +30,8 @@ class Position(models.Model):
         return self.slug
 
 
-class SnippetPosManager(models.Manager):
-
-    def get_snippet(self, **kwargs):
-        sp = self.filter(**kwargs)
-        return sp[0].snippet if sp else None
-
-
 class SnippetPos(Position):
     snippet = models.OneToOneField(Snippet, related_name="position", null=True, blank=True)
-    objects = SnippetPosManager()
 
     class Meta:
         verbose_name_plural = "Snippet Positons"
