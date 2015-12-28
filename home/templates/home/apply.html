@@ -15,7 +15,7 @@
             </div>
             <div class="map-bottom">
                 <div class="col-md-6 welcome-left">
-                    You can change your life today and experience all that the world has to offer in an exciting and different part of the world. Please fill out the Application form to the left. After your application is received we will email you with further information on how to get started. 
+                    You can change your life today and experience all that the world has to offer in an exciting and different part of the world. Please fill out the Application form behind. After your application is received we will email you with further information on how to get started. 
                     <p></p>
                     Please be sure to have the following items ready for submission: 
                     <p></p> 
@@ -43,33 +43,45 @@
     <div class="contact">
         <div class="container">
             <div class="contact-top heading"></div>
-            <div class="contact-bottom"> 
-                <div class="col-md-6 contact-left"> 
-                    <form>
-                        <h3>name</h3>
-                        <input type="text" placeholder="First" required="">
-                        <input type="text" placeholder="Last" required="">
-                        <h3>Address</h3>
-                        <input type="text" placeholder="Street Address" required="">
-                        <input type="text" placeholder="Address Line 2" required="">
-                        <input type="text" placeholder="City" required="">
-                        <input type="text" placeholder="State / Province / Region" required="" name="state" data-validation="federatestate">
-                        <input type="text" placeholder="Postal / Zip Code" required="">
-                        <input type="text" placeholder="Country" required="" name="country" data-validation="country">
-                    </form>
-                </div>
-                <div class="col-md-6 contact-left">
-                    <form>
-                        <h3>Email</h3>
-                        <input type="text" placeholder="E-mail" required="" name="email" data-validation="email">
-                        <h3>Phone Number</h3>
-                        <input type="text" placeholder="Phone" required="">
-                        <h3>Experiences</h3>
-                        <textarea placeholder="Experiences"></textarea>
-                        <h3>File</h3>
-                        <input type="filepicker" data-fp-apikey="Acgn1KbapSO6jrUmthcrkz" data-fp-mimetypes="*/*" data-fp-container="modal" onchange="$(fileurl).attr('value',event.fpfile.url);">
-                        <input id = "fileurl" name="fileurl" type="text" value="" style="display: none">
-                        <input type="submit" value="SUBMIT" style="margin-left: 50px">
+            <div class="contact-bottom">
+                <div class="contact-left">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="col-md-6">
+                            <h3>Name</h3>
+                            {{ form.first_name.errors }}
+                            {{ form.first_name }}
+                            {{ form.last_name.errors }}
+                            {{ form.last_name }}
+                            <h3>Address</h3>
+                            {{ form.address_1.errors }}
+                            {{ form.address_1 }}
+                            {{ form.address_2.errors }}
+                            {{ form.address_2 }}
+                            {{ form.city.errors }}
+                            {{ form.city }}
+                            {{ form.state.errors }}
+                            {{ form.state }}
+                            {{ form.zip_code.errors }}
+                            {{ form.zip_code }}
+                            {{ form.country.errors }}
+                            {{ form.country }}
+                        </fieldset>
+                        <fieldset class="col-md-6">
+                            <h3>Email</h3>
+                            {{ form.email.errors }}
+                            {{ form.email }}
+                            <h3>Phone Number</h3>
+                            {{ form.phone.errors }}
+                            {{ form.phone }}
+                            <h3>Experiences</h3>
+                            {{ form.experiences.errors }}
+                            {{ form.experiences }}
+                            <h3>Resume</h3>
+                            <input type="filepicker" data-fp-apikey="Acgn1KbapSO6jrUmthcrkz" data-fp-mimetypes="*/*" data-fp-container="modal" onchange="$('#{{ form.added_file_url.id_for_label }}').attr('value',event.fpfile.url);">
+                            {{ form.added_file_url }}
+                            <input type="submit" value="SUBMIT" style="margin-left: 50px">
+                        </fieldset>
                     </form> 
                 </div>
                 <div class="clearfix"> </div>

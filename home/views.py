@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
 from dashboard.models import SnippetPos
-from .forms import MessageForm
+from .forms import MessageForm, ApplicantForm
 
 
 def index(request):
@@ -39,4 +39,11 @@ def contact(request):
 
 
 def apply(request):
-    return render(request, 'home/apply.html')
+    form = ApplicantForm(request.POST or None)
+
+    # need a online test
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        return redirect(reverse('apply'))
+
+    return render(request, 'home/apply.html', locals())

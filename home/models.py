@@ -15,6 +15,34 @@ class Visitor(models.Model):
 class Message(models.Model):
     subject = models.CharField(max_length=140)
     content = models.TextField()
-    visitor = models.ForeignKey(Visitor, related_name="messages", null=True)
+    visitor = models.ForeignKey(Visitor, related_name='messages', null=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     updated = models.DateTimeField(auto_now=True, editable=False)
+
+
+class AbstractBaseApplicant(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    email = models.EmailField()
+    phone = models.CharField(max_length=16)
+
+    class Meta:
+        abstract = True
+
+
+class AddressMixin(models.Model):
+    address_1 = models.CharField(max_length=128)
+    address_2 = models.CharField(max_length=128, blank=True)
+
+    city = models.CharField(max_length=64)
+    state = models.CharField(max_length=64)
+    country = models.CharField(max_length=64)
+    zip_code = models.CharField(max_length=16)
+
+    class Meta:
+        abstract = True
+
+
+class Applicant(AbstractBaseApplicant, AddressMixin):
+    experiences = models.TextField()
+    added_file_url = models.URLField(blank=True)
