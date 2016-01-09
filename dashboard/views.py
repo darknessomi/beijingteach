@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from home.models import Message
+from home.models import Message, Applicant
 from .models import Snippet
 from .forms import SnippetForm
 
@@ -19,6 +19,12 @@ def index(request):
 def snippets(request):
     snippets = Snippet.objects.order_by('-updated')
     return render(request, 'dashboard/snippets.html', locals())
+
+
+@dashboard_login_required
+def applicants(request):
+    applicants = Applicant.objects.order_by('-updated')
+    return render(request, 'dashboard/applicants.html', locals())
 
 
 @dashboard_login_required

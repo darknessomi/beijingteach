@@ -41,7 +41,6 @@ def contact(request):
 def apply(request):
     form = ApplicantForm(request.POST or None)
 
-    # need a online test
     if request.method == "POST" and form.is_valid():
         form.save()
         return redirect(reverse('apply'))

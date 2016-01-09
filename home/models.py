@@ -46,3 +46,5 @@ class AddressMixin(models.Model):
 class Applicant(AbstractBaseApplicant, AddressMixin):
     experiences = models.TextField()
     added_file_url = models.URLField(blank=True)
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    updated = models.DateTimeField(auto_now=True, editable=False)

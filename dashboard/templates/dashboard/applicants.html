@@ -1,0 +1,29 @@
+{% extends "dashboard/base.html" %}
+
+{% block main %}
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="ghj">Applicants</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <td>Name</td>
+                        <td>Mail</td>
+                        <td>Experiences</td>
+                    </thead>
+                    <tbody>
+                        {% for a in applicants %}
+                        <tr>
+                            <td>{{ a.first_name }} {{ a.last_name }}</td>
+                            <td>{{ a.email }}</td>
+                            <td>{{ a.experiences|truncatechars:50 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

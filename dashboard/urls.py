@@ -8,6 +8,8 @@ urlpatterns = [
         views.login_user, name='login_user'),
     url(r'^snippets/$',
         views.snippets, name='snippets'),
+    url(r'^applicants/$',
+        views.applicants, name='applicants'),
     url(r'^snippets/new/$',
         views.new_snippet, name='new_snippet'),
     url(r'^snippets/(?P<snippet_id>\d+)/$',
