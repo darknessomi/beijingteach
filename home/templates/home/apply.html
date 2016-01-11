@@ -91,17 +91,17 @@
 
     <!--end-contact-->
 {% endblock %}
-        {% block javascript %}
-        <!-- start-form -->
-        <script>
 
-          $.validate({
-            modules : 'location',
-            onModulesLoaded : function() {
-              $('#country').suggestCountry();
-              $('#state').suggestState();
-            }
-          });
+{% block javascript %}
+<!-- start-form -->
+<script>
 
-        </script>
-        {% endblock %}
+  $.validate({
+    modules : 'location',
+    onModulesLoaded : function() {
+      $('#country').suggestCountry();
+    }
+  });
+
+</script>
+{% endblock %}

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Snippet, SnippetPos
+from .models import Snippet, Img, SnippetPos
 
 
 class StyledModelForm(forms.ModelForm):
@@ -46,3 +46,10 @@ class SnippetForm(StyledModelForm):
             snippet_pos_set[0].save()
 
         return instance
+
+
+class ImgForm(forms.ModelForm):
+
+    class Meta:
+        model = Img
+        fields = ['url']

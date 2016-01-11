@@ -1,0 +1,81 @@
+{% extends "dashboard/base.html" %}
+
+{% block style %}
+{{ block.super }}
+<style>
+    .thumbnail{
+        height: 350px;
+        overflow: auto;
+    }
+    .thumbnail img{
+        height: 220px;
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <h3 class="ghj">Images</h3>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="thumbnail">
+                    <img id="img-upload" src="/static/images/upload.png">
+                    <div class="caption" style="text-align:center">
+                        <hr>
+                        <input id="input-upload" type="filepicker" data-fp-apikey="ANXk2hzB0TUfODjaxKHWKz" data-fp-mimetypes="image/*" data-fp-container="modal" onchange="save_img_url(event.fpfile.url)">
+                    </div>
+                </div>
+            </div>
+
+            {% for s in images %}
+            <div class="col-lg-3">
+                <div class="thumbnail">
+                    <img src="{{ s.url }}">
+                    <hr>
+                    <div class="caption" style="text-align:center">
+                        <h3>Position</h3>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block foot_js %}
+{{ block.super }}
+<script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
+<script>
+    $('#img-upload').click(function() {
+        $('.fp__btn').click();
+    });
+
+    /* test this! */
+    function save_img_url(img_url) {
+        var failed_msg = "Upload failed! Please refresh page and try again."
+        var request = $.ajax({
+            method: 'POST',
+            url: "{% url 'dashboard:new_image' %}",
+            data: {"url": img_url}
+        })
+        request.done(function(msg) {
+            if (msg === 'success') {
+                window.location.reload();
+            }
+            else {
+                alert(failed_msg);
+            }
+        });
+        request.fail(function(jqXHR, textStatus) {
+            alert(failed_msg);
+        });
+    }
+</script>
+{% endblock %}
