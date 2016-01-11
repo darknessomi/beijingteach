@@ -15,7 +15,7 @@ class Snippet(models.Model):
 
 
 class Img(models.Model):
-    url = models.TextField()
+    url = models.URLField()
     created = models.DateTimeField(auto_now_add=True, editable=False)
     updated = models.DateTimeField(auto_now=True, editable=False)
 
@@ -46,7 +46,14 @@ class SnippetPos(Position):
 
 
 class ImgPos(Position):
-    img = models.ForeignKey(Img, related_name="position")
+    img = models.ForeignKey(Img, related_name="position", null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Img Positons"
+
+
+'''
+class SiteSetting(models.Model):
+    key = models.SlugField(unique=True)
+    value = models.CharField(max_length='50', blank=True)
+'''

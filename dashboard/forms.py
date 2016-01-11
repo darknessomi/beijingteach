@@ -1,5 +1,5 @@
 from django import forms
-from .models import Snippet, SnippetPos
+from .models import Snippet, Img, SnippetPos
 
 
 class StyledModelForm(forms.ModelForm):
@@ -19,17 +19,20 @@ class SnippetForm(StyledModelForm):
         required=False,
         label='position',
         widget=forms.Select(
-            attrs={'class': 'form-control'},
             choices=POSITION_CHOICES,
         ),
     )
+
+    class Meta:
+        model = Snippet
+        fields = ['subject', 'content', 'position']
 
     def __init__(self, *args, **kwargs):
         super(SnippetForm, self).__init__(*args, **kwargs)
         self.fields['content'].widget.attrs['rows'] = 25
 
-    def save(self, *args, **kwargs):
-        instance = super(SnippetForm, self).save(*args, **kwargs)
+    def save(self):
+        instance = super(SnippetForm, self).save()
 
         original_snippet_pos_set = SnippetPos.objects.filter(snippet=instance)
         if len(original_snippet_pos_set) == 1:
@@ -44,6 +47,9 @@ class SnippetForm(StyledModelForm):
 
         return instance
 
+
+class ImgForm(forms.ModelForm):
+
     class Meta:
-        model = Snippet
-        fields = ['subject', 'content', 'position']
+        model = Img
+        fields = ['url']

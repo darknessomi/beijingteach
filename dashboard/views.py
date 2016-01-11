@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from home.models import Message
-from .models import Snippet
-from .forms import SnippetForm
+from django.http import HttpResponse, Http404
+from home.models import Message, Applicant
+from .models import Snippet, Img
+from .forms import SnippetForm, ImgForm
 
 dashboard_login_required = login_required(login_url='/dashboard/login/')
 
@@ -19,6 +21,18 @@ def index(request):
 def snippets(request):
     snippets = Snippet.objects.order_by('-updated')
     return render(request, 'dashboard/snippets.html', locals())
+
+
+@dashboard_login_required
+def images(request):
+    images = Img.objects.order_by('-updated')
+    return render(request, 'dashboard/images.html', locals())
+
+
+@dashboard_login_required
+def applicants(request):
+    applicants = Applicant.objects.order_by('-updated')
+    return render(request, 'dashboard/applicants.html', locals())
 
 
 @dashboard_login_required
@@ -46,6 +60,23 @@ def update_snippet(request, snippet_id):
         return redirect(reverse('dashboard:snippets'))
 
     return render(request, 'dashboard/edit_snippet.html', locals())
+
+
+@dashboard_login_required
+@csrf_exempt
+def new_image(request):
+    form = ImgForm(request.POST or None)
+
+    if request.method == "POST":
+        message = ''
+        if form.is_valid():
+            form.save()
+            message = 'success'
+        else:
+            message = 'fail'
+        return HttpResponse(message)
+    else:
+        raise Http404
 
 
 def login_user(request):
