@@ -46,6 +46,24 @@
 
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Image</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="" alt="">
+                    <p>image url <code></code></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 
@@ -77,5 +95,12 @@
             alert(failed_msg);
         });
     }
+
+    /* active modal */
+    $('.thumbnail img').click(function(ev) {
+        $('#myModal').modal();
+        $('#myModal .modal-body img').attr("src", ev.currentTarget.currentSrc);
+        $('#myModal .modal-body code').html(ev.currentTarget.currentSrc);
+    });
 </script>
 {% endblock %}
