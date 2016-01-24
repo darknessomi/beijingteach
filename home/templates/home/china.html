@@ -1,15 +1,16 @@
 {% extends "base.html" %}
+
+
 {% block title %}CHINA{% endblock %}
+
+
 {% block head %}
+{{ block.super }}
+
 <!-- start-popImage -->
 <link href="/static/css/popImage.css" rel='stylesheet' type='text/css' />
-<script src="/static/js/jquery.popImage.js"></script>
-<script>
-    $(function(){
-        $("a.image_gall").popImage();
-    });
-</script>
 <!--end-popImage -->
+
 <!-- start-unslider -->
 <style>
 .slider { 
@@ -20,21 +21,10 @@ overflow: auto;
 list-style: none; 
 }
 </style>
-<script src="/static/js/unslider.min.js"></script>
-<script>
-    $(function() {
-        $('.slider').unslider({
-        speed: 1000,
-        delay: 3000,
-        complete: function() {},
-        keys: true,
-        dots: true,
-        fluid: false
-    });
-    });
-</script>
 <!--end-unslider -->
 {% endblock %}
+
+
 {% block main %}
     <!--start-what-->
     <div class="services">
@@ -146,4 +136,34 @@ list-style: none;
         </div>
     </div>
     <!--end-what-->
+{% endblock %}
+
+
+{% block javascript %}
+{{ block.super }}
+
+<!-- start-popImage -->
+<script src="/static/js/jquery.popImage.js"></script>
+<script>
+    $(function(){
+        $("a.image_gall").popImage();
+    });
+</script>
+<!--end-popImage -->
+
+<!-- start-unslider -->
+<script src="/static/js/unslider.min.js"></script>
+<script>
+    $(function() {
+        $('.slider').unslider({
+        speed: 1000,
+        delay: 3000,
+        complete: function() {},
+        keys: true,
+        dots: true,
+        fluid: false
+    });
+    });
+</script>
+<!--end-unslider -->
 {% endblock %}
