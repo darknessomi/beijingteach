@@ -20,6 +20,19 @@ class Img(models.Model):
     updated = models.DateTimeField(auto_now=True, editable=False)
 
 
+class Page(models.Model):
+    subject = models.CharField(max_length=140)
+    content = models.TextField(blank=True)
+    style = models.TextField(blank=True)
+    javascript = models.TextField(blank=True)
+    is_inherited = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    updated = models.DateTimeField(auto_now=True, editable=False)
+
+    def __str__(self):
+        return '{} ({})'.format(self.subject, self.updated)
+
+
 class Position(models.Model):
     slug = models.SlugField(unique=True)
 

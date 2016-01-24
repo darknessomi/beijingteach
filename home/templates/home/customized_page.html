@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+{% block title %}{{ page.subject }}{% endblock %}
+
+
+{% block head %}
+{% if page.is_inherited %}
+{{ block.super }}
+{% endif %}
+{{ page.style|safe }}
+{% endblock %}
+
+{% block header %}
+{% if page.is_inherited %}
+{{ block.super }}
+{% endif %}
+{% endblock %}
+
+{% block main %}
+{{ page.content|safe }}
+{% endblock %}
+
+{% block footer %}
+{% if page.is_inherited %}
+{{ block.super }}
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+{% if page.is_inherited %}
+{{ block.super }}
+{% endif %}
+{{ page.javascript|safe }}
+{% endblock %}

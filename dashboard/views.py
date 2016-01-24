@@ -5,8 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, Http404
 from home.models import Message, Applicant
-from .models import Snippet, Img
-from .forms import SnippetForm, ImgForm
+from .models import Snippet, Page, Img
+from .forms import SnippetForm, PageForm, ImgForm
 
 dashboard_login_required = login_required(login_url='/dashboard/login/')
 
@@ -21,6 +21,12 @@ def index(request):
 def snippets(request):
     snippets = Snippet.objects.order_by('-updated')
     return render(request, 'dashboard/snippets.html', locals())
+
+
+@dashboard_login_required
+def pages(request):
+    pages = Page.objects.order_by('-updated')
+    return render(request, 'dashboard/pages.html', locals())
 
 
 @dashboard_login_required
@@ -60,6 +66,36 @@ def update_snippet(request, snippet_id):
         return redirect(reverse('dashboard:snippets'))
 
     return render(request, 'dashboard/edit_snippet.html', locals())
+
+
+@dashboard_login_required
+def new_page(request):
+    form = PageForm(request.POST or None)
+
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        return redirect(reverse('dashboard:pages'))
+
+    return render(request, 'dashboard/edit_page.html', locals())
+
+
+@dashboard_login_required
+def update_page(request, page_id):
+    page = get_object_or_404(Page, pk=page_id)
+    form = PageForm(request.POST or None, instance=page)
+
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        return redirect(reverse('dashboard:pages'))
+
+    return render(request, 'dashboard/edit_page.html', locals())
+
+
+@dashboard_login_required
+def preview_page(request, page_id):
+    page = get_object_or_404(Page, pk=page_id)
+    print page.subject
+    return render(request, 'home/customized_page.html', locals())
 
 
 @dashboard_login_required

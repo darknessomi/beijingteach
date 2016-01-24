@@ -13,6 +13,7 @@
     {% endblock %}
   </head>
   <body>
+    {% block header %}
     <!--start-header-->
     <div class="header" id="home">
       <nav class="navbar navbar-default">
@@ -43,8 +44,12 @@
       </nav>
     </div>
     <!--end-header-->
+    {% endblock %}
+
     {% block main %}
     {% endblock %}
+
+    {% block footer %}
     <!--start-footer-->
     <div class="footer">
       <div class="container">
@@ -69,38 +74,41 @@
           <div class="clearfix"></div>
         </div>
       </div>
-      {% block javascript %}
-      <script src="/static/js/jquery.min.js"></script>
-      <script src="/static/js/bootstrap.js"></script>
-      <script type="application/x-javascript">
-        addEventListener("load", function() {
-          setTimeout(hideURLbar, 0);
-        }, false);
-        function hideURLbar(){
-          window.scrollTo(0,1);
-        }
-      </script>
-      <!-- start-smoth-scrolling -->
-      <script type="text/javascript" src="/static/js/move-top.js"></script>
-      <script type="text/javascript" src="/static/js/easing.js"></script>
-      <script type="text/javascript">
-        $(document).ready(function($) {
-          $(".scroll").click(function(event){     
-            event.preventDefault();
-            $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-          });
-        });
-      </script>
-      <!-- end-smoth-scrolling -->
-      <script type="text/javascript">
-        $(document).ready(function() {
-          $().UItoTop({ easingType: 'easeOutQuart' });
-        });
-      </script>
-      <a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-      {% endblock %}
     </div>
     <!--end-footer-->
+    {% endblock %}
+
+    {% block javascript %}
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script type="application/x-javascript">
+      addEventListener("load", function() {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      function hideURLbar(){
+        window.scrollTo(0,1);
+      }
+    </script>
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/static/js/move-top.js"></script>
+    <script type="text/javascript" src="/static/js/easing.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function($) {
+        $(".scroll").click(function(event){     
+          event.preventDefault();
+          $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+        });
+      });
+    </script>
+    <!-- end-smoth-scrolling -->
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $().UItoTop({ easingType: 'easeOutQuart' });
+      });
+    </script>
+    <a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    {% endblock %}
+
   </body>
 </html>
 {% endautoescape %}
