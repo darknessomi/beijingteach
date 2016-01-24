@@ -1,5 +1,5 @@
 from django import forms
-from .models import Snippet, Img, SnippetPos
+from .models import Snippet, Page, Img, SnippetPos
 
 
 class StyledModelForm(forms.ModelForm):
@@ -46,6 +46,20 @@ class SnippetForm(StyledModelForm):
             snippet_pos_set[0].save()
 
         return instance
+
+
+class PageForm(StyledModelForm):
+
+    class Meta:
+        model = Page
+        fields = ['subject', 'style', 'content', 'javascript', 'is_inherited']
+
+    def __init__(self, *args, **kwargs):
+        super(PageForm, self).__init__(*args, **kwargs)
+        self.fields['style'].widget.attrs['rows'] = 3
+        self.fields['javascript'].widget.attrs['rows'] = 3
+        self.fields['content'].widget.attrs['rows'] = 25
+        self.fields['is_inherited'].label = u'Inherit original framework'
 
 
 class ImgForm(forms.ModelForm):

@@ -1,16 +1,17 @@
 {% extends "base.html" %}
+
+
 {% block title %}ABOUT{% endblock %}
+
+
 {% block head %}
+{{ block.super }}
 <!-- start-popImage -->
 <link href="/static/css/popImage.css" rel='stylesheet' type='text/css' />
-<script src="/static/js/jquery.popImage.js"></script>
-<script>
-    $(function(){
-        $("a.image_gall").popImage();
-    });
-</script>
 <!--end-popImage -->
 {% endblock %}
+
+
 {% block main %}
     <!--start-about-->
     <div class="about">
@@ -118,4 +119,17 @@
         </div>
     </div>
     <!--end-vision-->
+{% endblock %}
+
+
+{% block javascript %}
+{{ block.super }}
+<!-- start-popImage -->
+<script src="/static/js/jquery.popImage.js"></script>
+<script>
+    $(function(){
+        $("a.image_gall").popImage();
+    });
+</script>
+<!--end-popImage -->
 {% endblock %}
