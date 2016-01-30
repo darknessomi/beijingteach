@@ -46,7 +46,8 @@
 
         </div>
     </div>
-    <!-- Modal -->
+
+    <!-- popup -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -55,8 +56,11 @@
                     <h4 class="modal-title" id="myModalLabel">Image</h4>
                 </div>
                 <div class="modal-body">
-                    <img src="" alt="">
-                    <p>image url <code></code></p>
+                    <img src="" alt="" width="570px">
+                    <p>
+                    <br>
+                    image url <code></code>
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -64,6 +68,7 @@
             </div>
         </div>
     </div>
+
 </div>
 {% endblock %}
 
@@ -75,7 +80,6 @@
         $('.fp__btn').click();
     });
 
-    /* test this! */
     function save_img_url(img_url) {
         var failed_msg = "Upload failed! Please refresh page and try again."
         var request = $.ajax({
@@ -94,9 +98,9 @@
         request.fail(function(jqXHR, textStatus) {
             alert(failed_msg);
         });
-    }
+    };
 
-    /* active modal */
+    /* active popup */
     $('.thumbnail img').click(function(ev) {
         $('#myModal').modal();
         $('#myModal .modal-body img').attr("src", ev.currentTarget.currentSrc);
