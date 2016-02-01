@@ -82,7 +82,11 @@ def new_page(request):
 @dashboard_login_required
 def update_page(request, page_id):
     page = get_object_or_404(Page, pk=page_id)
-    form = PageForm(request.POST or None, instance=page)
+    initial = {}
+    if page.has_pos():
+        initial = {'position': page.position.slug}
+
+    form = PageForm(request.POST or None, initial=initial, instance=page)
 
     if request.method == "POST" and form.is_valid():
         form.save()

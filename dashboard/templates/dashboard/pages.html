@@ -11,6 +11,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <td>Pub_date</td>
+                        <td>Route</td>
                         <td>Subject</td>
                         <td>Action</td>
                     </thead>
@@ -18,6 +19,7 @@
                         {% for p in pages %}
                         <tr>
                             <td>{{ p.updated }}</td>
+                            <td>{% if p.position %}{{ p.position.route|truncatechars:20 }}{% else %}----------{% endif %}</td>
                             <td><a href="{% url 'dashboard:preview_page' p.id %}" target="_blank">{{ p.subject|truncatechars:65 }}</a></td>
                             <td>
                                 <a class="label label-success" href="{% url 'dashboard:update_page' p.id %}">Edit</a>

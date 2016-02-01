@@ -3,12 +3,18 @@
 {% block style %}
 {{ block.super }}
 <style>
-    .thumbnail{
+    .thumbnail {
         height: 350px;
         overflow: auto;
     }
-    .thumbnail img{
+    .thumbnail img {
         height: 220px;
+    }
+    .caption, .modal-body, .modal-footer {
+        text-align: center;
+    }
+    .modal-body img {
+        max-width: 570px;
     }
 </style>
 {% endblock %}
@@ -25,7 +31,7 @@
             <div class="col-lg-3">
                 <div class="thumbnail">
                     <img id="img-upload" src="/static/images/upload.png">
-                    <div class="caption" style="text-align:center">
+                    <div class="caption">
                         <hr>
                         <input id="input-upload" type="filepicker" data-fp-apikey="ANXk2hzB0TUfODjaxKHWKz" data-fp-mimetypes="image/*" data-fp-container="modal" onchange="save_img_url(event.fpfile.url)">
                     </div>
@@ -37,7 +43,7 @@
                 <div class="thumbnail">
                     <img src="{{ s.url }}">
                     <hr>
-                    <div class="caption" style="text-align:center">
+                    <div class="caption">
                         <h3>Position</h3>
                     </div>
                 </div>
@@ -56,11 +62,7 @@
                     <h4 class="modal-title" id="myModalLabel">Image</h4>
                 </div>
                 <div class="modal-body">
-                    <img src="" alt="" width="570px">
-                    <p>
-                    <br>
-                    image url <code></code>
-                    </p>
+                    <img><p><br><code></code></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
