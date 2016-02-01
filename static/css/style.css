@@ -42,7 +42,7 @@ body a:hover{
 	background: rgb(156, 158, 159);
 }
 .navbar-header {
-	background: rgb(34, 34, 34);
+	background: rgba(34, 34, 34, 0);
 	width: 18%;
 	float: left;
 	text-align: center;
