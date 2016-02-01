@@ -32,6 +32,9 @@ class Page(models.Model):
     def __str__(self):
         return '{} ({})'.format(self.subject, self.updated)
 
+    def has_pos(self):
+        return len(PagePos.objects.filter(page=self)) == 1
+
 
 class Position(models.Model):
     slug = models.SlugField(unique=True)
@@ -56,6 +59,25 @@ class SnippetPos(Position):
 
     class Meta:
         verbose_name_plural = "Snippet Positons"
+
+
+class PagePosManager(models.Manager):
+
+    def get_page(self, **kwargs):
+        pp = self.filter(**kwargs)
+        return pp[0].page if pp else None
+
+
+class PagePos(Position):
+    page = models.OneToOneField(Page, related_name="position", null=True, blank=True)
+    objects = PagePosManager()
+
+    class Meta:
+        verbose_name_plural = "Page Positons"
+
+    @property
+    def route(self):
+        return u'/pages/{slug}'.format(slug=self.slug)
 
 
 class ImgPos(Position):

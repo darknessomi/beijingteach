@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
-from dashboard.models import SnippetPos
+from dashboard.models import SnippetPos, PagePos
 from .forms import MessageForm, ApplicantForm
 
 
@@ -26,6 +26,11 @@ def china(request):
 def accommodations(request):
     snippet = SnippetPos.objects.get_snippet(slug='accommodations')
     return render(request, 'home/accommodations.html', locals())
+
+
+def customized_page(request, slug):
+    page = PagePos.objects.get_page(slug=slug)
+    return render(request, 'home/customized_page.html', locals())
 
 
 def contact(request):
