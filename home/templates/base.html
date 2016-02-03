@@ -1,3 +1,5 @@
+{% load header_links %}
+
 {% autoescape off %}
 <!DOCTYPE html>
 <html>
@@ -30,14 +32,7 @@
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="{% url 'index' %}" class="hvr-bounce-to-top">Home <span class="sr-only">(current)</span></a></li>
-              <li><a href="{% url 'about' %}" class="hvr-bounce-to-top">About</a></li>
-              <li><a href="{% url 'experience' %}" class="hvr-bounce-to-top">Experience</a></li>
-              <li><a href="{% url 'china' %}" class="hvr-bounce-to-top">China</a></li>
-              <li><a href="{% url 'accommodations' %}" class="hvr-bounce-to-top">Accommodations</a></li>
-              <li><a href="{% url 'contact' %}" class="hvr-bounce-to-top">Contact</a></li>
-            </ul>
+            {% show_header_links %}
             <div class="clearfix"></div>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
