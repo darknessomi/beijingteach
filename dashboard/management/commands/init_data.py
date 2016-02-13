@@ -1,5 +1,10 @@
+import os
+from django.conf import settings
 from django.core.management.base import BaseCommand
-from dashboard.models import SnippetPos, PagePos, SiteSetting
+from dashboard.models import Page, SnippetPos, PagePos, SiteSetting
+from basic_templates import Translator
+
+MARK_FILE_PATH = os.path.join(settings.BASE_DIR, 'basic_templates')
 
 
 class Command(BaseCommand):
@@ -55,3 +60,22 @@ class Command(BaseCommand):
 
     def auto_templates(self):
         print 'Create default templates...'
+
+        page_slugs = (d['slug'] for d in self.page_pos_init_data)
+        for slug in page_slugs:
+            print 'Create default templates of %s' % slug
+            data = self.translate_mark_file(slug)
+            new_page = Page.objects.create(**data)
+            pp = PagePos.objects.get(slug=slug)
+            pp.page = new_page
+            pp.save()
+
+    def translate_mark_file(self, slug):
+        filename = slug + '.html'
+        filepath = os.path.join(MARK_FILE_PATH, filename)
+
+        with Translator(filepath) as t:
+            data = t.translate()
+
+        data['subject'] = slug
+        return data
