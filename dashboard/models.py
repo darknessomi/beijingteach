@@ -67,6 +67,11 @@ class PagePosManager(models.Manager):
         pp = self.filter(**kwargs)
         return pp[0].page if pp else None
 
+    def get_headers(self):
+        raw_setting = SiteSetting.get('header_links')
+        links = raw_setting.split('|')
+        return self.filter(slug__in=links)
+
 
 class PagePos(Position):
     page = models.OneToOneField(Page, related_name="position", null=True, blank=True)
@@ -100,4 +105,4 @@ class SiteSetting(models.Model):
     @classmethod
     def get(cls, k, default=None):
         k_set = cls.objects.filter(key=k)
-        return default if len(k_set) < 1 else k_set[0]
+        return default if len(k_set) < 1 else k_set[0].value

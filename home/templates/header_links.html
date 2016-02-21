@@ -1,0 +1,7 @@
+<ul class="nav navbar-nav">
+  <li class="active"><a href="{% url 'index' %}" class="hvr-bounce-to-top">Home <span class="sr-only">(current)</span></a></li>
+  {% for pos in header_pos %}
+  <li><a href="{{ pos.route }}" class="hvr-bounce-to-top">{{ pos.slug }}</a></li>
+  {% endfor %}
+  <li><a href="{% url 'contact' %}" class="hvr-bounce-to-top">Contact</a></li>
+</ul>
