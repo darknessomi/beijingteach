@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, Http404
 from django.core.urlresolvers import reverse
 from dashboard.models import SnippetPos, PagePos
 from .forms import MessageForm, ApplicantForm
@@ -30,6 +30,8 @@ def accommodations(request):
 
 def customized_page(request, slug):
     page = PagePos.objects.get_page(slug=slug)
+    if not page:
+        raise Http404
     return render(request, 'home/customized_page.html', locals())
 
 
