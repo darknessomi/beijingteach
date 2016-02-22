@@ -25,5 +25,5 @@ urlpatterns = [
     url(r'^pages/preview/(?P<page_id>\d+)/$',
         views.preview_page, name='preview_page'),
     url(r'^images/new/$',
-        views.new_image, name='new_image'),
+        views.new_images, name='new_images'),
 ]
