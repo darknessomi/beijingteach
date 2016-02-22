@@ -33,7 +33,7 @@
                     <img id="img-upload" src="/static/images/upload.png">
                     <div class="caption">
                         <hr>
-                        <input id="input-upload" type="filepicker" data-fp-apikey="ANXk2hzB0TUfODjaxKHWKz" data-fp-mimetypes="image/*" data-fp-container="modal" onchange="save_img_url(event.fpfile.url)">
+                        <input id="input-upload" type="filepicker" data-fp-apikey="ANXk2hzB0TUfODjaxKHWKz" data-fp-mimetypes="image/*" data-fp-container="modal" data-fp-multiple="true" onchange="save_img_urls(event.fpfiles)">
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
             {% for s in images %}
             <div class="col-lg-3">
                 <div class="thumbnail">
-                    <img src="{{ s.url }}">
+                    <img class="uploaded-img" src="{{ s.url }}">
                     <hr>
                     <div class="caption">
                         <h3>Position</h3>
@@ -78,23 +78,28 @@
 {{ block.super }}
 <script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
 <script>
-    $('#img-upload').click(function() {
-        $('.fp__btn').click();
-    });
+    function parse_img_urls(imgs) {
+        var out='';
+        for(var i=0; i < imgs.length; i++) {
+            out += imgs[i].url;
+            out += '\n';
+        };
+        return out;
+    }
 
-    function save_img_url(img_url) {
+    function save_img_urls(imgs) {
         var failed_msg = "Upload failed! Please refresh page and try again."
         var request = $.ajax({
             method: 'POST',
-            url: "{% url 'dashboard:new_image' %}",
-            data: {"url": img_url}
+            url: "{% url 'dashboard:new_images' %}",
+            data: {"urls": parse_img_urls(imgs)}
         })
         request.done(function(msg) {
             if (msg === 'success') {
                 window.location.reload();
             }
             else {
-                alert(failed_msg);
+                alert('Failed on:\n\n' + msg + '\n\nPlease send this message to admin!');
             }
         });
         request.fail(function(jqXHR, textStatus) {
@@ -103,10 +108,17 @@
     };
 
     /* active popup */
-    $('.thumbnail img').click(function(ev) {
+    $('.thumbnail .uploaded-img').click(function(ev) {
+        ev.preventDefault();
         $('#myModal').modal();
         $('#myModal .modal-body img').attr("src", ev.currentTarget.currentSrc);
         $('#myModal .modal-body code').html(ev.currentTarget.currentSrc);
+    });
+
+    /* active upload */
+    $('#img-upload').click(function(ev) {
+        ev.preventDefault();
+        $('.fp__btn').click();
     });
 </script>
 {% endblock %}

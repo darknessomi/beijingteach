@@ -104,17 +104,20 @@ def preview_page(request, page_id):
 
 @dashboard_login_required
 @csrf_exempt
-def new_image(request):
-    form = ImgForm(request.POST or None)
+def new_images(request):
 
     if request.method == "POST":
-        message = ''
-        if form.is_valid():
-            form.save()
-            message = 'success'
-        else:
-            message = 'fail'
-        return HttpResponse(message)
+
+        failed = []
+        for url in request.POST['urls'].split():
+            form = ImgForm({'url': url})
+            if form.is_valid():
+                form.save()
+            else:
+                failed.append(url)
+
+        return HttpResponse(u'\n'.join(failed) or 'success')
+
     else:
         raise Http404
 
