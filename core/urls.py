@@ -13,10 +13,6 @@ urlpatterns += [
     # user pages (home app)
     url(r'^$', home.index, name='index'),
     url(r'^pages/(?P<slug>\w+)/$', home.customized_page, name='customized_page'),
-    url(r'^about/$', home.about, name='about'),
-    url(r'^experience/$', home.experience, name='experience'),
-    url(r'^china/$', home.china, name='china'),
-    url(r'^accommodations/$', home.accommodations, name='accommodations'),
     url(r'^contact/$', home.contact, name='contact'),
     url(r'^apply/$', home.apply, name='apply'),
 ]
