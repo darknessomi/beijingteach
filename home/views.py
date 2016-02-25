@@ -8,26 +8,6 @@ def index(request):
     return render(request, 'home/index.html')
 
 
-def about(request):
-    snippet = SnippetPos.objects.get_snippet(slug='about')
-    return render(request, 'home/about.html', locals())
-
-
-def experience(request):
-    snippet = SnippetPos.objects.get_snippet(slug='experience')
-    return render(request, 'home/experience.html', locals())
-
-
-def china(request):
-    snippet = SnippetPos.objects.get_snippet(slug='china')
-    return render(request, 'home/china.html', locals())
-
-
-def accommodations(request):
-    snippet = SnippetPos.objects.get_snippet(slug='accommodations')
-    return render(request, 'home/accommodations.html', locals())
-
-
 def customized_page(request, slug):
     page = PagePos.objects.get_page(slug=slug)
     if not page:
