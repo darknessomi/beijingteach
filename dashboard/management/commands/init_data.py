@@ -13,14 +13,14 @@ class Command(BaseCommand):
         {'slug': 'about'},
         {'slug': 'experience'},
         {'slug': 'china'},
-        {'slug': 'accommodations'},
+        {'slug': 'accommodation'},
     ]
 
     page_pos_init_data = [
         {'slug': 'about'},
         {'slug': 'experience'},
         {'slug': 'china'},
-        {'slug': 'accommodations'},
+        {'slug': 'accommodation'},
     ]
 
     site_setting_init_data = [
